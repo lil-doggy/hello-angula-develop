@@ -1,0 +1,53 @@
+
+<h1>New Developer</h1>
+
+<form (ngSubmit)="submitRegistrationRequest()">
+
+  <label for="first-name">First Name</label>
+  <input
+    id="first-name"
+    name="first-name"
+    type="text"
+    [ngModel]="firstName()"
+    (ngModelChange)="firstName.set($event)"
+    required
+  >
+
+  @if (!isFirstNameValid()) {
+    <div class="error">
+      First name must be at least 2 characters
+    </div>
+  }
+
+  <label for="last-name">Last Name</label>
+  <input
+    id="last-name"
+    name="last-name"
+    type="text"
+    [ngModel]="lastName()"
+    (ngModelChange)="lastName.set($event)"
+    required
+  >
+
+  @if (!isLastNameValid()) {
+    <div class="error">
+      Last name must be at least 2 characters
+    </div>
+  }
+
+  <div class="button-group">
+    <button type="submit" [disabled]="!isValid()">
+      Register
+    </button>
+
+    <button type="button" (click)="deferRegistrationRequest()">
+      Defer
+    </button>
+
+    <button type="button" (click)="clearFields()">
+      Clear
+    </button>
+  </div>
+
+</form>
+

@@ -8,6 +8,7 @@ export class Developer {
   constructor(firstName: string= '', lastName: string) {
     this.#firstName = firstName.trim();
     this.#lastName = lastName.trim();
+    this.#id = null;
   }
 get id():string | null {
     return this.#id;
@@ -28,7 +29,7 @@ get id():string | null {
     return Developer.isValidName(firstName) && Developer.isValidName(lastName);
   }
 
-  get fullName(): string {
-    return !this.isRegistered()
+  isValidForRegistration(): boolean {
+    return !this.isRegistered();
   }
  }
